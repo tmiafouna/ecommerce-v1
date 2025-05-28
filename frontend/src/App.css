@@ -40,3 +40,96 @@
 .read-the-docs {
   color: #888;
 }
+
+/* Variables de couleurs globales */
+:root {
+  --primary: #4f46e5;
+  --primary-hover: #4338ca;
+  --secondary: #6b7280;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --light: #f3f4f6;
+  --dark: #1f2937;
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Styles globaux */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: var(--dark);
+  background-color: #f9fafb;
+}
+
+/* Transitions et animations */
+button, a, .card, .table-row {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Styles des cartes */
+.card {
+  border-radius: 0.5rem;
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+  background-color: white;
+}
+
+/* Styles des boutons */
+button {
+  border-radius: 0.375rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+/* Styles des tableaux */
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+}
+
+table th {
+  font-weight: 500;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  background-color: #f9fafb;
+}
+
+table td {
+  padding: 0.75rem 1rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+/* Styles des badges */
+.badge {
+  border-radius: 9999px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+/* Styles des formulaires */
+input, select, textarea {
+  border-radius: 0.375rem;
+  border: 1px solid #d1d5db;
+  padding: 0.5rem 0.75rem;
+  transition: all 0.2s;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+/* Ru00e8gles pour ru00e9duire la taille des icu00f4nes */
+svg {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+/* Ajustement spu00e9cifique pour les icu00f4nes dans les boutons et liens */
+button svg, a svg, .icon svg {
+  width: 14px !important;
+  height: 14px !important;
+}
