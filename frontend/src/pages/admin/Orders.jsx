@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { MagnifyingGlassIcon, EyeIcon } from '@heroicons/react/24/outline';
 
+// Composant de gestion des commandes - Version finale
+
 const Orders = () => {
   const [orders, setOrders] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);

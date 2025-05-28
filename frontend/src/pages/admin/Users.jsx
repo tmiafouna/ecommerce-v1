@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { MagnifyingGlassIcon, PencilIcon, TrashIcon } from '@heroicons/react/24/outline';
 
+// Composant de gestion des utilisateurs - Version finale
+
 const Users = () => {
   const [users, setUsers] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
