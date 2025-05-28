@@ -1,0 +1,239 @@
+/* Styles pour l'interface d'administration */
+
+/* Variables de couleurs */
+:root {
+  --primary: #3b82f6;
+  --primary-hover: #2563eb;
+  --secondary: #6b7280;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --light: #f3f4f6;
+  --dark: #1f2937;
+}
+
+/* Styles généraux */
+body {
+  background-color: #f9fafb;
+}
+
+/* Sidebar */
+.admin-sidebar {
+  background-color: #1e293b;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  color: white;
+}
+
+.admin-sidebar a {
+  color: #e2e8f0;
+  text-decoration: none;
+}
+
+.admin-sidebar .nav-link {
+  transition: all 0.2s ease-in-out;
+  border-radius: 8px;
+  margin-bottom: 4px;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.admin-sidebar .nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.admin-sidebar .nav-link.active {
+  background-color: var(--primary);
+  color: white;
+}
+
+/* Cartes et conteneurs */
+.admin-card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(229, 231, 235, 0.5);
+  transition: all 0.2s ease-in-out;
+}
+
+.admin-card:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.admin-stats-card {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.admin-stats-card .icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 16px;
+}
+
+.admin-stats-card .icon.blue {
+  background-color: #e0e7ff;
+  color: #4f46e5;
+}
+
+.admin-stats-card .icon.green {
+  background-color: #d1fae5;
+  color: #10b981;
+}
+
+.admin-stats-card .icon.purple {
+  background-color: #ede9fe;
+  color: #8b5cf6;
+}
+
+.admin-stats-card .icon.amber {
+  background-color: #fef3c7;
+  color: #f59e0b;
+}
+
+.admin-stats-card .content .title {
+  font-size: 14px;
+  color: var(--secondary);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.admin-stats-card .content .value {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--dark);
+  margin-top: 4px;
+}
+
+/* Boutons */
+.admin-button {
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.admin-button.primary {
+  background-color: var(--primary);
+  color: white;
+}
+
+.admin-button.primary:hover {
+  background-color: var(--primary-hover);
+}
+
+.admin-button.secondary {
+  background-color: white;
+  color: var(--dark);
+  border: 1px solid #e5e7eb;
+}
+
+.admin-button.secondary:hover {
+  background-color: #f9fafb;
+}
+
+.admin-button.danger {
+  background-color: var(--danger);
+  color: white;
+}
+
+.admin-button.danger:hover {
+  background-color: #dc2626;
+}
+
+.admin-button .icon {
+  margin-right: 8px;
+}
+
+/* Badges */
+.admin-badge {
+  padding: 4px 10px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+}
+
+.admin-badge.success {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.admin-badge.warning {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.admin-badge.info {
+  background-color: #e0e7ff;
+  color: #3730a3;
+}
+
+/* Tables */
+.admin-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.admin-table th {
+  background-color: #f9fafb;
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 500;
+  color: var(--secondary);
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.admin-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.admin-table tr:hover {
+  background-color: #f9fafb;
+}
+
+/* Formulaires */
+.admin-form-control {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  transition: all 0.2s ease-in-out;
+}
+
+.admin-form-control:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.admin-form-label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--dark);
+}
+
+/* Ru00e9duire la taille des icu00f4nes */
+svg {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+/* Ajustement spu00e9cifique pour les icu00f4nes dans les boutons et liens */
+button svg, a svg, .icon svg {
+  width: 14px !important;
+  height: 14px !important;
+}
