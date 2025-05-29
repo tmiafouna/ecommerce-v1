@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const jwt = require('jsonwebtoken');
 
 const app = express();
 
@@ -13,6 +14,25 @@ app.use(express.json());
 app.get('/', (req, res) => {
   res.json({ message: 'API is running' });
 });
+
+// Routes d'authentification
+const authRoutes = require('./routes/auth');
+app.use('/api/auth', authRoutes);
+
+// Middleware JWT
+const authenticateToken = (req, res, next) => {
+  const authHeader = req.header('Authorization');
+  const token = authHeader && authHeader.split(' ')[1];
+  if (!token) return res.status(401).json({ message: 'Access denied. No token provided.' });
+  try {
+    const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+    req.user = decoded;
+    next();
+  } catch (ex) {
+    res.status(400).json({ message: 'Invalid token.' });
+  }
+};
+app.use(authenticateToken);
 
 // Connexion à MongoDB
 mongoose.connect(process.env.MONGO_URI)
