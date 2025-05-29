@@ -18,11 +18,14 @@ app.get('/', (req, res) => {
 // Routes d'authentification
 const authRoutes = require('./routes/auth');
 const productRoutes = require('./routes/product');
+const orderRoutes = require('./routes/order');
 
 // Routes d'authentification
 app.use('/api/auth', authRoutes);
 // Routes des produits
 app.use('/api/products', productRoutes);
+// Routes des commandes
+app.use('/api/orders', orderRoutes);
 
 // Middleware JWT
 const authenticateToken = (req, res, next) => {
