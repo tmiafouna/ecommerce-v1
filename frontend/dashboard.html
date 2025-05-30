@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+<body>
+  <aside class="sidebar">
+    <div>
+      <h2>Admin Panel</h2>
+      <a href="dashboard.html" class="active">Dashboard</a>
+      <a href="products.html">Produits</a>
+      <a href="#">Commandes</a>
+      <a href="#">Utilisateurs</a>
+    </div>
+    <button class="logout">Déconnexion</button>
+  </aside>
+
+  <main class="main">
+    <h1 class="page-title">Tableau de bord</h1>
+
+    <div class="card-container">
+      <div class="card">
+        <h3>💰 Ventes totales</h3>
+        <p>2 995 €</p>
+      </div>
+      <div class="card">
+        <h3>📦 Commandes</h3>
+        <p>3</p>
+      </div>
+      <div class="card">
+        <h3>🛍️ Produits</h3>
+        <p>4</p>
+      </div>
+      <div class="card">
+        <h3>👥 Utilisateurs</h3>
+        <p>4</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="table">
+        <h3>Commandes récentes</h3>
+        <ul>
+          <li>Commande #1003 - Pierre Durand - 598 € <span class="badge yellow">En attente</span></li>
+          <li>Commande #1002 - Marie Martin - 1 299 € <span class="badge blue">En cours</span></li>
+          <li>Commande #1001 - Jean Dupont - 1 098 € <span class="badge green">Livré</span></li>
+        </ul>
+      </div>
+
+      <div class="table">
+        <h3>Produits populaires</h3>
+        <ul>
+          <li>Laptop Pro - 1 299 € - 20 en stock <span class="badge green">Populaire</span></li>
+          <li>Smartphone XYZ - 899 € - 45 en stock <span class="badge green">Populaire</span></li>
+          <li>Casque audio - 199 € - 100 en stock <span class="badge green">Populaire</span></li>
+        </ul>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
