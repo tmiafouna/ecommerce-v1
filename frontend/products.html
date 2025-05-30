@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestion des produits</title>
+  <link rel="stylesheet" href="products.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div>
+      <h2>Admin Panel</h2>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="products.html" class="active">Produits</a>
+      <a href="#">Commandes</a>
+      <a href="#">Utilisateurs</a>
+    </div>
+    <button class="logout">Déconnexion</button>
+  </aside>
+
+  <main class="main">
+    <h1 class="page-title">Gestion des produits</h1>
+
+    <div class="product-panel">
+      <button class="add-btn">+ Ajouter un produit</button>
+
+      <table class="product-table">
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Nom</th>
+            <th>Prix</th>
+            <th>Catégorie</th>
+            <th>Stock</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><img src="#" alt="Smartphone XYZ"></td>
+            <td>Smartphone XYZ</td>
+            <td>899 €</td>
+            <td><span class="badge blue">Électronique</span></td>
+            <td><span class="badge yellow">45</span></td>
+            <td>✏️ 🗑️</td>
+          </tr>
+          <tr>
+            <td><img src="#" alt="Laptop Pro"></td>
+            <td>Laptop Pro</td>
+            <td>1299 €</td>
+            <td><span class="badge blue">Électronique</span></td>
+            <td><span class="badge red">20</span></td>
+            <td>✏️ 🗑️</td>
+          </tr>
+          <tr>
+            <td><img src="#" alt="Casque audio"></td>
+            <td>Casque audio</td>
+            <td>199 €</td>
+            <td><span class="badge grey">Accessoires</span></td>
+            <td><span class="badge green">100</span></td>
+            <td>✏️ 🗑️</td>
+          </tr>
+          <tr>
+            <td><img src="#" alt="Montre connectée"></td>
+            <td>Montre connectée</td>
+            <td>299 €</td>
+            <td><span class="badge grey">Accessoires</span></td>
+            <td><span class="badge yellow">30</span></td>
+            <td>✏️ 🗑️</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</body>
+</html>
