@@ -6,8 +6,10 @@ import Checkout from "../pages/Checkout.js";
 import Command from "../pages/Command.js";
 import ProductList from "../pages/ProductList.js";
 import ProductDetail from "../pages/ProductDetail.js";
+import OrderHistory from "../pages/OrderHistory.js";
 import PrivateRoute from "../routes/PrivateRoutes.js";
 import Navbar from "../components/PublicNavbar.js";
+
 
 const AppRouter = () => {
   return React.createElement(
@@ -46,12 +48,8 @@ const AppRouter = () => {
           ),
         }),
         React.createElement(Route, {
-          path: "/orders",
-          element: React.createElement(
-            PrivateRoute,
-            null,
-            React.createElement(Command)
-          ),
+          path: "/OrderHistory",
+          element: React.createElement(OrderHistory),
         }),
         React.createElement(Route, {
           path: "*",
