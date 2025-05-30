@@ -4,46 +4,33 @@ const productSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
-    trim: true,
+    trim: true
   },
   description: {
     type: String,
-    required: true,
-    trim: true,
+    required: true
   },
   price: {
     type: Number,
     required: true,
-    min: 0,
-  },
-  category: {
-    type: String,
-    required: true,
-    trim: true,
+    min: 0
   },
   stock: {
     type: Number,
     required: true,
-    min: 0,
+    min: 0
+  },
+  category: {
+    type: String,
+    required: true
   },
   images: [{
-    type: String,
-    required: true,
+    type: String
   }],
   createdAt: {
     type: Date,
-    default: Date.now,
-  },
-  updatedAt: {
-    type: Date,
-    default: Date.now,
-  },
-});
-
-// Middleware pour mettre à jour updatedAt
-productSchema.pre('save', function(next) {
-  this.updatedAt = Date.now();
-  next();
+    default: Date.now
+  }
 });
 
 module.exports = mongoose.model('Product', productSchema);

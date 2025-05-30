@@ -1,65 +1,99 @@
 const Product = require('../models/Product');
 
-// Créer un nouveau produit
 exports.createProduct = async (req, res) => {
+  console.log('Creating product:', req.body);
   try {
-    const product = new Product(req.body);
+    const { name, description, price, stock, category, images } = req.body;
+
+    const product = new Product({
+      name,
+      description,
+      price,
+      stock,
+      category,
+      images
+    });
+
     await product.save();
-    res.status(201).json(product);
+
+    console.log('Product created successfully:', product);
+    res.status(201).json({
+      message: 'Product created successfully',
+      product
+    });
+
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    console.error('Error creating product:', error);
+    res.status(500).json({
+      message: 'Failed to create product',
+      error: error.message
+    });
   }
 };
 
-// Obtenir tous les produits
 exports.getProducts = async (req, res) => {
+  console.log('Fetching products');
   try {
     const products = await Product.find();
+    console.log('Found products:', products);
     res.json(products);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.error('Error fetching products:', error);
+    res.status(500).json({
+      message: 'Failed to fetch products',
+      error: error.message
+    });
   }
 };
 
-// Obtenir un produit par ID
-exports.getProductById = async (req, res) => {
-  try {
-    const product = await Product.findById(req.params.id);
-    if (!product) {
-      return res.status(404).json({ message: 'Product not found' });
-    }
-    res.json(product);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-};
-
-// Mettre à jour un produit
 exports.updateProduct = async (req, res) => {
+  console.log('Updating product:', req.params.id, req.body);
   try {
-    const product = await Product.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true, runValidators: true }
-    );
+    const { id } = req.params;
+    const updates = req.body;
+
+    const product = await Product.findByIdAndUpdate(id, updates, { new: true });
+
     if (!product) {
       return res.status(404).json({ message: 'Product not found' });
     }
-    res.json(product);
+
+    console.log('Product updated successfully:', product);
+    res.json({
+      message: 'Product updated successfully',
+      product
+    });
+
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    console.error('Error updating product:', error);
+    res.status(500).json({
+      message: 'Failed to update product',
+      error: error.message
+    });
   }
 };
 
-// Supprimer un produit
 exports.deleteProduct = async (req, res) => {
+  console.log('Deleting product:', req.params.id);
   try {
-    const product = await Product.findByIdAndDelete(req.params.id);
+    const { id } = req.params;
+    const product = await Product.findByIdAndDelete(id);
+
     if (!product) {
       return res.status(404).json({ message: 'Product not found' });
     }
-    res.json({ message: 'Product deleted' });
+
+    console.log('Product deleted successfully:', product);
+    res.json({
+      message: 'Product deleted successfully',
+      product
+    });
+
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.error('Error deleting product:', error);
+    res.status(500).json({
+      message: 'Failed to delete product',
+      error: error.message
+    });
   }
 };
