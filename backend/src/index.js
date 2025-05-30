@@ -1,57 +1,75 @@
-require('dotenv').config();
+const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
+
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const jwt = require('jsonwebtoken');
+
+const authRoutes = require('./routes/auth');
+const productRoutes = require('./routes/products');
 
 const app = express();
 
 // Middleware
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-// Routes
-app.get('/', (req, res) => {
-  res.json({ message: 'API is running' });
+// Test endpoint
+app.get('/test', (req, res) => {
+  console.log('Test endpoint hit');
+  res.json({ message: 'Server is running' });
 });
 
-// Routes d'authentification
-const authRoutes = require('./routes/auth');
-const productRoutes = require('./routes/product');
-const orderRoutes = require('./routes/order');
-const adminRoutes = require('./routes/admin');
-
-// Routes d'authentification
+// Routes
 app.use('/api/auth', authRoutes);
-// Routes des produits
 app.use('/api/products', productRoutes);
-// Routes des commandes
-app.use('/api/orders', orderRoutes);
-// Routes d'administration
-app.use('/api/admin', adminRoutes);
-
-// Middleware JWT
-const authenticateToken = (req, res, next) => {
-  const authHeader = req.header('Authorization');
-  const token = authHeader && authHeader.split(' ')[1];
-  if (!token) return res.status(401).json({ message: 'Access denied. No token provided.' });
-  try {
-    const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
-    req.user = decoded;
-    next();
-  } catch (ex) {
-    res.status(400).json({ message: 'Invalid token.' });
-  }
-};
-app.use(authenticateToken);
 
 // Connexion à MongoDB
-mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log('Connected to MongoDB'))
-  .catch((err) => console.error('MongoDB connection error:', err));
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+  .then(() => {
+    console.log('Connected to MongoDB');
+    console.log('MongoDB URI:', process.env.MONGO_URI);
+  })
+  .catch((error) => {
+    console.error('MongoDB connection error:', error);
+    console.error('MongoDB URI:', process.env.MONGO_URI);
+    process.exit(1);
+  });
 
-// Démarrage du serveur
-const PORT = process.env.PORT || 5000;
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error('Error:', err);
+  res.status(500).json({
+    message: 'Internal server error',
+    error: err.message
+  });
+});
+
+// Logging middleware
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.path} - ${new Date().toISOString()}`);
+  console.log('Headers:', req.headers);
+  console.log('Body:', req.body);
+  next();
+});
+
+const PORT = process.env.PORT || 3002;
+console.log(`Starting server on port ${PORT}`);
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
+  console.log('Environment variables:', {
+    PORT,
+    MONGO_URI: process.env.MONGO_URI,
+    JWT_SECRET: process.env.JWT_SECRET ? 'Set' : 'Not set'
+  });
+});
+
+// Health check endpoint
+app.get('/health', (req, res) => {
+  res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
