@@ -7,6 +7,7 @@ import Command from "../pages/Command.js";
 import ProductList from "../pages/ProductList.js";
 import ProductDetail from "../pages/ProductDetail.js";
 import OrderHistory from "../pages/OrderHistory.js";
+import PublicDashboard from "../pages/PublicDashboard.js";
 import PrivateRoute from "../routes/PrivateRoutes.js";
 import Navbar from "../components/PublicNavbar.js";
 
@@ -50,6 +51,10 @@ const AppRouter = () => {
         React.createElement(Route, {
           path: "/OrderHistory",
           element: React.createElement(OrderHistory),
+        }),
+        React.createElement(Route, {
+          path: "/PublicDashboard",
+          element: React.createElement(PublicDashboard),
         }),
         React.createElement(Route, {
           path: "*",
