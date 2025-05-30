@@ -7,85 +7,121 @@ const ProductDetail = () => {
     price: "899.00 €",
     stock: 45,
     category: "Électronique",
-    image: "https://via.placeholder.com/150?text=📱",
+    image: "https://via.placeholder.com/600x400?text=📱",
   };
 
   return React.createElement(
     "div",
-    { className: "bg-gray-50 min-h-screen p-6" },
+    {
+      style: {
+        backgroundColor: "#f9fafb",
+        minHeight: "100vh",
+        padding: "3rem 1rem",
+        fontFamily: "Arial, sans-serif",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      },
+    },
     React.createElement(
       "div",
-      { className: "max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-md" },
+      {
+        style: {
+          backgroundColor: "#ffffff",
+          padding: "2.5rem",
+          borderRadius: "18px",
+          boxShadow: "0 10px 25px rgba(0,0,0,0.06)",
+          maxWidth: "800px",
+          width: "100%",
+        },
+      },
+      React.createElement("img", {
+        src: product.image,
+        alt: product.name,
+        style: {
+          width: "100%",
+          height: "auto",
+          borderRadius: "10px",
+          marginBottom: "1.5rem",
+        },
+      }),
       React.createElement(
         "h1",
-        { className: "text-3xl font-bold mb-6 text-center" },
-        "Détail du produit"
+        { style: { fontSize: "1.9rem", fontWeight: "bold", marginBottom: "0.6rem" } },
+        product.name
       ),
       React.createElement(
-        "div",
-        { className: "flex flex-col md:flex-row gap-6" },
-        React.createElement("img", {
-          src: product.image,
-          alt: product.name,
-          className: "w-full md:w-1/3 rounded",
-        }),
+        "p",
+        { style: { color: "#6b7280", marginBottom: "1.2rem", fontSize: "1rem" } },
+        product.description
+      ),
+      React.createElement(
+        "p",
+        { style: { fontSize: "1.25rem", fontWeight: "bold", color: "#3b82f6", marginBottom: "1rem" } },
+        product.price
+      ),
+      React.createElement(
+        "p",
+        null,
+        "Catégorie : ",
         React.createElement(
-          "div",
-          { className: "flex-1" },
-          React.createElement(
-            "h2",
-            { className: "text-xl font-semibold mb-2" },
-            product.name
-          ),
-          React.createElement(
-            "p",
-            { className: "text-gray-600 mb-4" },
-            product.description
-          ),
-          React.createElement(
-            "p",
-            { className: "text-lg font-bold mb-2" },
-            "Prix : ",
-            React.createElement("span", { className: "text-blue-600" }, product.price)
-          ),
-          React.createElement(
-            "p",
-            { className: "mb-2" },
-            "Catégorie : ",
-            React.createElement(
-              "span",
-              { className: "px-2 py-1 text-sm bg-blue-100 text-blue-700 rounded-full" },
-              product.category
-            )
-          ),
-          React.createElement(
-            "p",
-            null,
-            "Stock : ",
-            React.createElement(
-              "span",
-              {
-                className: `px-2 py-1 text-sm rounded-full ${
-                  product.stock >= 50
-                    ? "bg-green-100 text-green-700"
-                    : product.stock >= 25
-                    ? "bg-yellow-100 text-yellow-700"
-                    : "bg-red-100 text-red-700"
-                }`,
-              },
-              product.stock
-            )
-          )
+          "span",
+          {
+            style: {
+              backgroundColor: "#e0f2fe",
+              color: "#0369a1",
+              padding: "0.35rem 0.8rem",
+              borderRadius: "999px",
+              fontSize: "0.9rem",
+            },
+          },
+          product.category
+        )
+      ),
+      React.createElement(
+        "p",
+        { style: { marginTop: "0.6rem" } },
+        "Stock : ",
+        React.createElement(
+          "span",
+          {
+            style: {
+              padding: "0.35rem 0.8rem",
+              borderRadius: "999px",
+              backgroundColor:
+                product.stock >= 50
+                  ? "#dcfce7"
+                  : product.stock >= 25
+                  ? "#fef9c3"
+                  : "#fee2e2",
+              color:
+                product.stock >= 50
+                  ? "#166534"
+                  : product.stock >= 25
+                  ? "#92400e"
+                  : "#991b1b",
+              fontSize: "0.9rem",
+            },
+          },
+          `${product.stock} unités`
         )
       ),
       React.createElement(
         "div",
-        { className: "mt-6 flex justify-end" },
+        { style: { marginTop: "2rem", textAlign: "right" } },
         React.createElement(
           "button",
           {
-            className: "bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700",
             onClick: () => window.history.back(),
+            style: {
+              backgroundColor: "#6b7280",
+              color: "#fff",
+              padding: "0.6rem 1.2rem",
+              borderRadius: "8px",
+              fontSize: "0.9rem",
+              border: "none",
+              cursor: "pointer",
+            },
           },
           "← Retour"
         )

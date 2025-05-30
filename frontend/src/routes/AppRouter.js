@@ -29,12 +29,13 @@ const AppRouter = () => {
           element: React.createElement(Register),
         }),
         React.createElement(Route, {
-          path: "/products",
-          element: React.createElement(
-            PrivateRoute,
-            null,
-            React.createElement(ProductList)
-          ),
+          path: "/ProductList",
+          element: React.createElement
+          (ProductList),
+        }),
+        React.createElement(Route, {
+          path: "/ProductDetail",
+          element: React.createElement(ProductDetail),
         }),
         React.createElement(Route, {
           path: "/checkout",
